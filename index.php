@@ -1,5 +1,17 @@
 <?php
-require './functions.php'
+session_start();
+require 'functions.php';
+
+if (isset($_GET['length'])) {
+    $length = intval($_GET['length']);
+
+    if ($length > 0) {
+        $password_generated = passwordGenerator($length);
+        $_SESSION['password'] = $password_generated;
+    }
+
+    header('Location: result.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,11 +28,6 @@ require './functions.php'
         <input type="number" name="length" id="length" min="1" required>
         <button type="submit">Genera Password</button>
     </form>
-    <?php
-    if (!empty($password_generated)) {
-        echo '<h2>Password generata:</h2>';
-        echo '<p><strong>' . $password_generated . '</strong></p>';
-    }
-    ?>
+    
 </body>
 </html>

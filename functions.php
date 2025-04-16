@@ -18,8 +18,6 @@ if (isset($_GET['length'])) {
     
     if ($length > 0) {
         $password_generated = passwordGenerator($length);
-    } else {
-        $password_generated = 'Inserisci un numero valido maggiore di 0.';
     }
 }
 ?>
